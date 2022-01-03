@@ -12,25 +12,24 @@ function RandomBook({users }) {
 
   return (
     <div class="flex">
-      <div class="mx-auto p-10">
-        {/* {console.log("ranBook=========",users)} */}
+      <div class=" lg:mx-auto lg:p-8 pt-24 px-32 ">
+
             {/* <h1 className="text-1xl lg:text-2xl font-bold text-center"> OUR NEXT BOOK IS:</h1> */}
             {/* {showElement?<div>I'm here and i will be gone</div>:<></>}  */}
               {
-            users === undefined || users.bookId === "" ? <span></span> : 
+            users === undefined || users.bookId === "" ? <span class="invisible"></span> : 
             
             (
-
-              <div>
-              <img
+              
+              <div class="lg:w-96 lg:h-92 lg:py-12 shadow rounded bg-primary-content ">
+              <img class=" rounded lg:mx-auto shadow"
                 alt={`${users.title} book`}
                 src={`http://books.google.com/books/content?id=${users.bookId}&printsec=frontcover&img=1&zoom=1&source=gbs_api`}
               />
             <div>
-                <h1>{users.title}</h1>
-                <h1>{users.author}</h1>
-                <h1>{users.publishedDate}</h1>
-              </div>
+                <h1 class="text-center text-3xl py-2">{users.title}</h1>
+                <h1 class="text-center text-1xl py-1 text-base font-normal text-primary"> {users.author}</h1>
+            </div>
             </div>
 
             )

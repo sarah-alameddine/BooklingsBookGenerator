@@ -8,6 +8,7 @@ import {db} from "../firebase-config.js";
 // addDoc - allows you to write to database
 // use updateDoc - to update fields in collection
 import {collection, getDocs, addDoc, deleteDoc,doc} from "firebase/firestore";
+import catLook from './catLook.jpg';
 
 
 
@@ -22,6 +23,7 @@ function GeneratePage() {
 
     // get random item from a Set
   function getRandomItem(booksInDB) {
+    // window.location.reload();
     let items = Array.from(booksInDB);
     if (items.length !== 0) {
         let ranBookObj = items[ Math.floor(Math.random() * items.length)];
@@ -35,6 +37,7 @@ function GeneratePage() {
                 title: ranBookObj.title,  
 
             });
+            
         }
       return users;
     } 
@@ -55,13 +58,15 @@ function GeneratePage() {
 
 
   return (
-    <div class="w-full p-1">
+    <div class="w-full ">
           <div class="m-auto p-10">
             <MainText/>
           </div>
           <Buttons onClick={() => getRandomItem(booksInDB)} title={"CLICK HERE SAH!"}/>
           <RandomBook users={users}/>
-
+          <div class="m-auto w-28">
+          <img class="rounded-full" src={catLook} alt="cat" width="80" height="80" />
+          </div>
       </div>
   );
 }

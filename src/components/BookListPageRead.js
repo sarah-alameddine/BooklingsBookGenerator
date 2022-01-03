@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // addDoc - allows you to write to database
 // use updateDoc - to update fields in collection
 import {collection, getDocs, addDoc, deleteDoc,doc, updateDoc} from "firebase/firestore";
-import catScream from './catScream.jpg';
+import catHowl from './catHowl.jpg';
 
 export default function BookListPage() {
     const [bookList,setUsers]= useState([]);
@@ -59,34 +59,30 @@ export default function BookListPage() {
       <div class="w-full p-1">
         <div class="py-4 artboard artboard-demo">
   <ul class="menu items-stretch px-3 shadow-lg bg-base-100 horizontal rounded-box">
-    <li class="bordered">
+    <li>
     <Link to="/CurrReadPage">
             Current Books
             </Link>
     </li> 
-    <li >
+    <li class="bordered">
     <Link to="/readPage">
             Read Books
             </Link>
     </li> 
   </ul>
 </div>
-        <div class="m-auto p-10">
-          
-        {/* <h1 className="text-2xl lg:text-3xl font-bold text-center p-10"> CURRENT BOOK LIST</h1> */}
-        <h1 class="text-5xl lg:text-5xl font-bold text-center text-primary-focus py-10" > Current book list </h1>
+        <div class="m-auto p-10 ">
           <div>
-          {/* ----------------------------------------- BOOKS THAT HAVE NOT BEEN READ --------------------------------------- */}
-          {checkIfListhasReadBooks(bookList, false) === false ? 
-          
-          <div class="shadow py-20 text-center">NO BOOKS TO LIST - GO ADD SOME SAH!!! </div>
-          
+          {/* ----------------------------------------- BOOKS THAT HAVE BEEN READ --------------------------------------- */}
+          <h1 class="text-5xl lg:text-5xl font-bold text-center text-primary-focus py-10" > Read book list </h1>
+          {checkIfListhasReadBooks(bookList, true) === false ? 
+          <div class="shadow py-20 text-center">NO BOOKS TO LIST CAUSE YOU HAVENT READ ANY :( </div>
           : bookList.map((book) => {
-            if (book.read === false){
+            if (book.read === true){
             return ( 
               <div>
             <div class="shadow py-20"> 
-              {/* <div class="divider  divider-primary px-20"></div>  */}
+              {/* <div class="divider px-20"></div>  */}
               {/* <div class="grid rounded-box place-items-center"> */}
 
               <div class="flex flex-col w-full lg:flex-row">
@@ -99,9 +95,8 @@ export default function BookListPage() {
               <h1 class="py-1 text-base font-normal text-primary">{book.author}</h1>
               </div> 
             <div class="grid flex-grow  lg:w-1 lg:h-0 lg:pt-20 place-items-center">
-            <Buttons onClick={() => {markBookAsRead(book.id)}} title="Mark Book as read"/>
+            <Buttons onClick={() => {markBookAsUnread(book.id)}} title="Mark Book as unread"/>
             <Buttons onClick={() => {deleteBookFromDB(book.id)}} title="delete book from list"/>
-            
             </div>
             </div>
 
@@ -111,13 +106,9 @@ export default function BookListPage() {
             );
           }})}
           </div>
-          <div>
-          {/* ----------------------------------------- BOOKS THAT HAVE BEEN READ --------------------------------------- */}
-          
-          </div>
         </div>
         <div class="m-auto w-28">
-          <img class="rounded-full" src={catScream} alt="cat" width="80" height="80" />
+          <img class="rounded-full" src={catHowl} alt="cat" width="80" height="80" />
     </div>
         </div>
     )
