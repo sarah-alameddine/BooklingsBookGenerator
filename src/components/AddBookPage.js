@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchBar from './SearchBar.js';
 import Buttons from "./Buttons.js";
 import {db} from "../firebase-config.js";
-import {collection, getDocs, addDoc, deleteDoc,doc} from "firebase/firestore";
+import {collection, getDocs, addDoc} from "firebase/firestore";
 import catPlay from './catPlay.jpg';
 
 
