@@ -62,7 +62,7 @@ function GeneratePage() {
           <div class="m-auto p-10">
             <MainText/>
           </div>
-          <Buttons onClick={() => getRandomItem(booksInDB)} title={"CLICK HERE SAH!"}/>
+          <Buttons onClick={() => getRandomItem(booksInDB)} title={"CLICK HERE!"}/>
           <RandomBook users={users}/>
           <div class="m-auto w-28">
           <img class="rounded-full" src={catLook} alt="cat" width="80" height="80" />
